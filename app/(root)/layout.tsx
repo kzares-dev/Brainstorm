@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='pt-[10rem]'>{children}</body>
+      <body className='py-[10rem]'>{children}</body>
     </html>
   )
 }
