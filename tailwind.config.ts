@@ -90,7 +90,7 @@ export default {
             {},
         },
         ".h2": {
-          "@apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
+          "@apply font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[5.25rem] lg:leading-[4.0625rem] xl:text-[4.75rem] xl:leading-[5.5rem]":
             {},
         },
         ".h3": {

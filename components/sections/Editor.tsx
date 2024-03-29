@@ -1,9 +1,28 @@
+"use client";
 import Image from "next/image"
 import ContainerHead from "../shared/ContainerHead"
 import generate from "@/public/icons/generate.svg"
 import GeneratedWords from "./GeneratedWords"
+import { useGetNouns } from "@/lib/actions/nouns.action"
+
+import { useState } from "react";
+import Loader from "../shared/Loader";
 
 const Editor = () => {
+
+    const [quantity, setQuantity] = useState<number>(10);
+    const [nouns, setNouns] = useState<string[]>([]);
+    const [promisePending, setPromisePending] = useState(false);
+
+    const getNouns = () => {
+        setPromisePending(true);
+        setNouns([]);
+        useGetNouns(quantity)
+            .then((response) => {
+                setNouns(response);
+            })
+            .finally(() => setPromisePending(false))
+    }
     return (
         <section className="bg-gray-50 min-h-[20vh] shadow-md  border-1 rounded-md border-slate-600 flex flex-col gap-3" >
             <ContainerHead text="Search for inspiration" />
@@ -20,12 +39,19 @@ const Editor = () => {
                                 nouns
                             </span>
                         </div>
-                        <input type="number" placeholder="10" className="w-full pl-[4.5rem] pr-3 py-3 appearance-none bg-transparent outline-none border-2 border-n-3 focus:border-slate-600 shadow-sm rounded-lg" />
+                        <input
+                            value={quantity}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuantity(parseInt(e.target.value))}
+                            type="number"
+                            placeholder="10"
+                            className="w-full pl-[4.5rem] pr-3 py-3 appearance-none bg-transparent outline-none border-2 border-n-3 focus:border-slate-600 shadow-sm rounded-lg" />
                     </div>
                 </div>
 
-                <button className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
-                    
+                <button
+                    onClick={getNouns}
+                    className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
+
                     <span className="font-sora text-2xl font-bold font-code text-n-7">generate</span>
 
                     <Image
@@ -39,8 +65,11 @@ const Editor = () => {
 
             </div>
 
+            {nouns.length > 0 && <GeneratedWords nouns={nouns} />}
 
-            <GeneratedWords />
+            {promisePending && <div className="min-h-[40vh] w-full flex items-center justify-center border-t">
+                <Loader />
+            </div>}
 
 
         </section>
