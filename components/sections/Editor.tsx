@@ -5,12 +5,12 @@ import generate from "@/public/icons/generate.svg"
 import GeneratedWords from "./GeneratedWords"
 import { useGetNouns } from "@/lib/actions/nouns.action"
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Loader from "../shared/Loader";
 
 const Editor = () => {
 
-    const [quantity, setQuantity] = useState<number>(10);
+    const [quantity, setQuantity] = useState<number>(5);
     const [nouns, setNouns] = useState<string[]>([]);
     const [promisePending, setPromisePending] = useState(false);
 
@@ -20,14 +20,23 @@ const Editor = () => {
         useGetNouns(quantity)
             .then((response) => {
                 setNouns(response);
+                scrollToRef(scrollRef);
             })
-            .finally(() => setPromisePending(false))
+            .finally(() => setPromisePending(false));
     }
+    // this function is to when the words are loaded then the screen make scroll to top
+    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
+        ref.current?.scrollIntoView({ behavior: 'smooth',  block: 'start' });
+      };
+    
+      const scrollRef = useRef<HTMLDivElement>(null);
+
+
     return (
         <section className="bg-gray-50 min-h-[20vh] shadow-md  border-1 rounded-md border-slate-600 flex flex-col gap-3" >
             <ContainerHead text="Search for inspiration" />
 
-            <div className="flex items-center justify-between w-full px-3">
+            <div className="flex items-center justify-between w-full px-3" ref={scrollRef}>
 
                 <div className="p-4 rounded-lg">
                     <label className="text-gray-600 text-lg font-code font-bold">
@@ -40,6 +49,8 @@ const Editor = () => {
                             </span>
                         </div>
                         <input
+                            min={2}
+                            max={20}
                             value={quantity}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuantity(parseInt(e.target.value))}
                             type="number"
@@ -75,5 +86,6 @@ const Editor = () => {
         </section>
     )
 }
+
 
 export default Editor
