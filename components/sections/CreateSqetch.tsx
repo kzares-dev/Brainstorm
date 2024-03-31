@@ -23,7 +23,7 @@ const CreateSqetch = ({ noSqetchs, nouns, addSqetch }: { noSqetchs: boolean, nou
 
                     <h3 className="h3"> Click to create a sqetch </h3>
                 </div> : <div className="">
-                    <div className="cursor-pointer w-full py-4 border-dotted border-2 border-n-5 flex flex-row items-center rounded-md gap-4">
+                    <div className="cursor-pointer w-full py-4 border-dotted border-2 border-n-5 flex flex-row items-center rounded-md gap-4 px-2">
                         <PiFoldersFill className="w-[40px] h-[40px]" />
 
                         <h3 className="h4"> Click to create a sqetch </h3>

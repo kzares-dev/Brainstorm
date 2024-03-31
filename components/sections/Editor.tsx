@@ -52,9 +52,13 @@ const Editor = () => {
                             min={2}
                             max={20}
                             value={quantity}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuantity(parseInt(e.target.value))}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                if(parseInt(e.target.value) < 2)  return setQuantity(2);
+                                if(parseInt(e.target.value) > 15)  return setQuantity(15);
+                                setQuantity(parseInt(e.target.value))
+                            }}
                             type="number"
-                            placeholder="10"
+                            placeholder="min:2 || max:15"
                             className="w-full pl-[4.5rem] pr-3 py-3 appearance-none bg-transparent outline-none border-2 border-n-3 focus:border-slate-600 shadow-sm rounded-lg" />
                     </div>
                 </div>
