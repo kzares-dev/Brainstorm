@@ -10,7 +10,7 @@ import Loader from "../shared/Loader";
 
 const Editor = () => {
 
-    const [quantity, setQuantity] = useState<number>(5);
+    const [quantity, setQuantity] = useState<number>(3);
     const [nouns, setNouns] = useState<string[]>([]);
     const [promisePending, setPromisePending] = useState(false);
 

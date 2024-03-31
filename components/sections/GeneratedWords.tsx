@@ -20,19 +20,22 @@ const GeneratedWords = ({ nouns }: { nouns: string[] }) => {
   return (
     <section className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row">
       {/*-------- Here goes the selected words ---------*/}
-      <div className="flex-1 w-full h-auto p-4 ">
+      <div className="flex-1 h-auto p-4 ">
 
         <div className="border-b">
           <h2 className="h2"> Have no ideas?</h2>
-          <p className="h3"> Build an idea related to  <span className="text-[#EFBC9B] font-bold underline"> {randomElements[0]} </span> and <span className="text-[#EFBC9B] font-bold underline"> {randomElements[1]} </span> </p>
+          <div className="flex flex-row items-center">
+            <p className="h3"> Build an idea related to  <span className="text-[#EFBC9B] font-bold underline"> {randomElements[0]} </span> and <span className="text-[#EFBC9B] font-bold underline"> {randomElements[1]} </span> </p>
+
+          </div>
         </div>
 
-        <SquetchIdeas nouns={nouns}  />
+        <SquetchIdeas nouns={nouns} />
 
       </div>
       <div className="w-[1px] h-auto bg-neutral-300 gr" />
       {/*-------- Random generated words ---------*/}
-      <div className="flex-1 w-full h-auto  bg-gray-100 py-5">
+      <div className="flex-1 h-auto  bg-gray-100 py-5">
 
         <div className="p-4 gap-4 lg:gap-10 flex flex-col">
           {nouns.map((word: string) => (

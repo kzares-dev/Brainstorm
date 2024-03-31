@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateSqetch from "./CreateSqetch";
 import { MdOutlinePushPin } from "react-icons/md";
 
@@ -7,11 +7,17 @@ import { MdOutlinePushPin } from "react-icons/md";
 const Sqetch = ({ nouns }: { nouns: string[] }) => {
 
     const [sqetchs, setSqetchs] = useState<string[]>([]);
+
     const addSqetch = (newSqetch: string) => {
-        setSqetchs((prevState: string[]) => [...prevState, newSqetch])
+        setSqetchs((prevState: string[]) => [newSqetch,...prevState]);
+        localStorage.setItem('sqetchs', JSON.stringify([newSqetch,...sqetchs]))
     }
 
-    console.log(sqetchs)
+    // get the sqetchs saved in localStorage 
+    useEffect(() => {
+        const localSqetchs = JSON.parse(localStorage.getItem('sqetchs') || '[]');
+        if(localSqetchs) setSqetchs(localSqetchs);
+    }, []);
 
 
     return <div className="py-4 flex flex-col gap-4">
