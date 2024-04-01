@@ -1,11 +1,12 @@
 "use client";
-import ContainerHead from "../shared/ContainerHead"
+import ContainerHead from "@/components/shared/ContainerHead"
 import generate from "@/public/icons/generate.svg"
+import SqetchIdeas from "@/components/sections/SqetchIdeas"
 import { useState } from "react";
-import GeneratedWords from "./GeneratedWords";
 import Image from "next/image";
+import Link from "next/link";
 
-const Editor = () => {
+const MainContent = ({ children }: { children: React.ReactNode }) => {
 
     const [quantity, setQuantity] = useState<number>(3);
     const [togglePress, setTogglePress] = useState(false);
@@ -14,8 +15,10 @@ const Editor = () => {
 
     return (
         <section className="bg-gray-50 min-h-[20vh] shadow-md  border-1 rounded-md border-slate-600 flex flex-col gap-3" >
+            {/*---- Header of the application ----*/}
             <ContainerHead text="Search for inspiration" />
 
+            {/*---- Words Quantity Selector ----*/}
             <div className="flex items-center justify-between w-full px-3">
 
                 <div className="p-4 rounded-lg">
@@ -43,7 +46,8 @@ const Editor = () => {
                     </div>
                 </div>
 
-                <button
+                <Link
+                    href={`/${quantity}`}
                     onClick={(() => setTogglePress(!togglePress))}
                     className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
 
@@ -56,18 +60,28 @@ const Editor = () => {
                         src={generate}
                     />
 
-                </button>
+                </Link >
 
             </div>
 
-            <GeneratedWords
-                togglePress={togglePress}
-                quantity={quantity}
-            />
+
+            <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row">
+                {/*-------- Here goes the selected words ---------*/}
+                <div className="flex-1 h-auto p-4 ">
+                    <SqetchIdeas />
+
+                </div>
+
+                <div className="w-[1px] h-auto bg-neutral-300 gr" />
+                {/*-------- Random generated words ---------*/}
+
+                {children}
+
+            </div>
 
         </section>
     )
 }
 
 
-export default Editor
+export default MainContent

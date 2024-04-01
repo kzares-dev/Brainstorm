@@ -1,11 +1,12 @@
-import Editor from "@/components/sections/Editor";
-import Hero from "@/components/sections/Hero";
 
-export default function Home() {
+// ! This route is intencionatly blank
+// the middleware will redirect the incoming requests from /to
+const Page = () => {
   return (
-    <main className="container">
-      <Hero />
-      <Editor />
-    </main>
+    <div>
+      
+    </div>
   )
 }
+
+export default Page

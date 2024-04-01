@@ -1,9 +1,9 @@
 import { useGetNouns } from "@/lib/actions/nouns.action";
 
-const ListOfNouns = async () => {
+const Generate = async ({ params } : { params: { quantity: number}}) => {
 
     // call server action
-    const nouns = await useGetNouns(4);
+    const nouns = await useGetNouns(params.quantity);
     const randomElements = ["a", "b"];
 
 
@@ -29,4 +29,4 @@ const ListOfNouns = async () => {
     )
 }
 
-export default ListOfNouns
+export default Generate

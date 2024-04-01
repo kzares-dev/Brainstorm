@@ -1,3 +1,7 @@
+{/*
+
+
+
 import axios from 'axios';
 // TODO: implement the aeonaAi api to make api requests
 
@@ -25,3 +29,9 @@ export async function useGetPrompt(words: string[]) {
     }
 
 }
+
+
+
+
+
+*/}

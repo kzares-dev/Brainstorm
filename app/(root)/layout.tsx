@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import '../globals.css'
+import Hero from '@/components/sections/Hero'
+import MainContent from '@/components/sections/MainContent'
 
 
 export const metadata: Metadata = {
@@ -14,7 +16,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='py-[10rem]'>{children}</body>
+      <body className='py-[10rem] container'>
+        <Hero />
+        <MainContent>
+          {children}
+        </MainContent>
+
+
+      </body>
     </html>
   )
 }
