@@ -1,15 +1,31 @@
 "use client";
 import ContainerHead from "@/components/shared/ContainerHead"
 import generate from "@/public/icons/generate.svg"
-import SqetchIdeas from "@/components/sections/SqetchIdeas"
-import { useState } from "react";
+import SqetchIdeas from "@/components/SqetchIdeas"
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useGetNouns } from "@/lib/actions/nouns.action";
+import ListOfNouns from "../ListOfNouns";
+import { getRandomElements } from "@/lib/utils";
 
-const MainContent = ({ children }: { children: React.ReactNode }) => {
+const MainContent = () => {
 
     const [quantity, setQuantity] = useState<number>(3);
-    const [togglePress, setTogglePress] = useState(false);
+    const [toggleButton, setToggleButton] = useState<boolean>(false);
+    const [nouns, setNouns] = useState<string[]>([]);
+    const [randomNouns, setRandomNouns] = useState<string[]>([])
+
+
+    useEffect(() => {
+        useGetNouns(quantity)
+            .then((data) => {
+                setNouns(data);
+                setRandomNouns(getRandomElements(data));
+            })
+
+
+    }, [toggleButton])
+
 
 
 
@@ -46,9 +62,8 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                     </div>
                 </div>
 
-                <Link
-                    href={`/${quantity}`}
-                    onClick={(() => setTogglePress(!togglePress))}
+                <button
+                    onClick={() => setToggleButton(!toggleButton)}
                     className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
 
                     <span className="font-sora text-2xl font-bold font-code text-n-7">generate</span>
@@ -60,22 +75,24 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                         src={generate}
                     />
 
-                </Link >
+                </button >
 
             </div>
 
 
             <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row">
                 {/*-------- Here goes the selected words ---------*/}
-                <div className="flex-1 h-auto p-4 ">
+                <div className="flex-1 h-auto p-4 w-1/2 ">
                     <SqetchIdeas />
 
                 </div>
 
                 <div className="w-[1px] h-auto bg-neutral-300 gr" />
                 {/*-------- Random generated words ---------*/}
+                <div className="w-1/2">
+                    {nouns.length > 0 && <ListOfNouns randomElements={randomNouns} nouns={nouns} />}
+                </div>
 
-                {children}
 
             </div>
 

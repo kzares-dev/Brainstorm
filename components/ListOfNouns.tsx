@@ -1,11 +1,5 @@
-import { useGetNouns } from "@/lib/actions/nouns.action";
 
-const ListOfNouns = async () => {
-
-    // call server action
-    const nouns = await useGetNouns(4);
-    const randomElements = ["a", "b"];
-
+const ListOfNouns = ({ nouns, randomElements }: { nouns: string[], randomElements: string[] }) => {
 
     return (
         <div className="flex-1 h-auto  bg-gray-50 py-5 px-2">
@@ -21,7 +15,7 @@ const ListOfNouns = async () => {
             <div className="p-4 gap-4 lg:gap-10 flex flex-col">
 
                 {nouns.map((word: string) => (
-                    <span className="font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[5.25rem] lg:leading-[4.0625rem] xl:text-[6.75rem] xl:leading-[5.5rem] text-n-6" key={word}>{word}</span>
+                    <span className="font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[2.25rem] lg:leading-[3.0625rem] xl:text-[5.75rem] xl:leading-[4.5rem] text-n-5 " key={word}>{word}</span>
                 ))}
             </div>
 

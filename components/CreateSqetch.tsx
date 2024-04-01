@@ -6,9 +6,9 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { PiFoldersFill } from "react-icons/pi"
-import { SelectWords } from "../shared/SelectWords"
-import { Textarea } from "../ui/textarea"
-import { Button } from "../ui/button"
+import { SelectWords } from "./shared/SelectWords"
+import { Textarea } from "./ui/textarea"
+import { Button } from "./ui/button"
 import { useRef } from "react";
 
 const CreateSqetch = ({ noSqetchs, addSqetch }: { noSqetchs: boolean, addSqetch: (newSqetch: string) => void }) => {

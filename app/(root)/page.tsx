@@ -1,10 +1,11 @@
+import Hero from "@/components/sections/Hero"
+import MainContent from "@/components/sections/MainContent"
 
-// ! This route is intencionatly blank
-// the middleware will redirect the incoming requests from /to
 const Page = () => {
   return (
     <div>
-      
+      <Hero />
+      <MainContent />
     </div>
   )
 }
