@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='py-[10rem] container'>
+      <body className='lg:py-[10rem] container'>
         {children}
       </body>
     </html>

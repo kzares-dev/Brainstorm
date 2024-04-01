@@ -35,12 +35,13 @@ const MainContent = () => {
             <ContainerHead text="Search for inspiration" />
 
             {/*---- Words Quantity Selector ----*/}
-            <div className="flex items-center justify-between w-full px-3">
+            <div className="flex items-center flex-col lg:flex-row justify-between w-full px-3">
 
-                <div className="p-4 rounded-lg">
+                <div className="p-4 rounded-lg ">
                     <label className="text-gray-600 text-lg font-code font-bold">
                         How many random words do you want?
                     </label>
+
                     <div className="relative mt-2 max-w-xs text-gray-500">
                         <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r border-slate-700 pr-2">
                             <span className="text-sm outline-none rounded-lg h-full">
@@ -82,14 +83,14 @@ const MainContent = () => {
 
             <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row">
                 {/*-------- Here goes the selected words ---------*/}
-                <div className="flex-1 h-auto p-4 w-1/2 ">
+                <div className="lg:flex-1 hidden lg:block h-auto p-4 lg:sw-1/2 ">
                     <SqetchIdeas />
 
                 </div>
 
-                <div className="w-[1px] h-auto bg-neutral-300 gr" />
+                <div className="w-[1px] h-auto bg-neutral-300 " />
                 {/*-------- Random generated words ---------*/}
-                <div className="w-1/2">
+                <div className="lg:w-1/2">
                     {nouns.length > 0 && <ListOfNouns randomElements={randomNouns} nouns={nouns} />}
                 </div>
 
