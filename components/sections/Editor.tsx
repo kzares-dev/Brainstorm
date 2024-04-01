@@ -1,42 +1,22 @@
 "use client";
-import Image from "next/image"
 import ContainerHead from "../shared/ContainerHead"
 import generate from "@/public/icons/generate.svg"
-import GeneratedWords from "./GeneratedWords"
-import { useGetNouns } from "@/lib/actions/nouns.action"
-
-import { useRef, useState } from "react";
-import Loader from "../shared/Loader";
+import { useState } from "react";
+import GeneratedWords from "./GeneratedWords";
+import Image from "next/image";
 
 const Editor = () => {
 
     const [quantity, setQuantity] = useState<number>(3);
-    const [nouns, setNouns] = useState<string[]>([]);
-    const [promisePending, setPromisePending] = useState(false);
+    const [togglePress, setTogglePress] = useState(false);
 
-    const getNouns = () => {
-        setPromisePending(true);
-        setNouns([]);
-        useGetNouns(quantity)
-            .then((response) => {
-                setNouns(response);
-                scrollToRef(scrollRef);
-            })
-            .finally(() => setPromisePending(false));
-    }
-    // this function is to when the words are loaded then the screen make scroll to top
-    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth',  block: 'start' });
-      };
-    
-      const scrollRef = useRef<HTMLDivElement>(null);
 
 
     return (
         <section className="bg-gray-50 min-h-[20vh] shadow-md  border-1 rounded-md border-slate-600 flex flex-col gap-3" >
             <ContainerHead text="Search for inspiration" />
 
-            <div className="flex items-center justify-between w-full px-3" ref={scrollRef}>
+            <div className="flex items-center justify-between w-full px-3">
 
                 <div className="p-4 rounded-lg">
                     <label className="text-gray-600 text-lg font-code font-bold">
@@ -53,8 +33,8 @@ const Editor = () => {
                             max={20}
                             value={quantity}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                if(parseInt(e.target.value) < 2)  return setQuantity(2);
-                                if(parseInt(e.target.value) > 15)  return setQuantity(15);
+                                if (parseInt(e.target.value) < 2) return setQuantity(2);
+                                if (parseInt(e.target.value) > 15) return setQuantity(15);
                                 setQuantity(parseInt(e.target.value))
                             }}
                             type="number"
@@ -64,7 +44,7 @@ const Editor = () => {
                 </div>
 
                 <button
-                    onClick={getNouns}
+                    onClick={(() => setTogglePress(!togglePress))}
                     className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
 
                     <span className="font-sora text-2xl font-bold font-code text-n-7">generate</span>
@@ -80,12 +60,10 @@ const Editor = () => {
 
             </div>
 
-            {nouns.length > 0 && <GeneratedWords nouns={nouns} />}
-
-            {promisePending && <div className="min-h-[40vh] w-full flex items-center justify-center border-t">
-                <Loader />
-            </div>}
-
+            <GeneratedWords
+                togglePress={togglePress}
+                quantity={quantity}
+            />
 
         </section>
     )

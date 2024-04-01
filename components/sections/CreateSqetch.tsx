@@ -11,7 +11,7 @@ import { Textarea } from "../ui/textarea"
 import { Button } from "../ui/button"
 import { useRef } from "react";
 
-const CreateSqetch = ({ noSqetchs, nouns, addSqetch }: { noSqetchs: boolean, nouns: string[], addSqetch: (newSqetch: string) => void }) => {
+const CreateSqetch = ({ noSqetchs, addSqetch }: { noSqetchs: boolean, addSqetch: (newSqetch: string) => void }) => {
 
     const sqetchRef = useRef<any>(null);
 
@@ -36,7 +36,7 @@ const CreateSqetch = ({ noSqetchs, nouns, addSqetch }: { noSqetchs: boolean, nou
             <DialogHeader className="flex flex-col gap-3">
                 <h1 className="h3">Create a Sqetch</h1>
                 <Textarea ref={sqetchRef} placeholder="Describe your idea..." className="placeholder:text-n-4" />
-                {/* <SelectWords nouns={nouns} />*/}
+            
 
                 <DialogTrigger>
                     <Button className="h3" onClick={() => addSqetch(sqetchRef?.current?.value )}> Create Sqetch </Button>

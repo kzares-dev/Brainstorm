@@ -4,7 +4,7 @@ import CreateSqetch from "./CreateSqetch";
 import { MdOutlinePushPin } from "react-icons/md";
 
 
-const Sqetch = ({ nouns }: { nouns: string[] }) => {
+const Sqetch = () => {
 
     const [sqetchs, setSqetchs] = useState<string[]>([]);
 
@@ -23,7 +23,6 @@ const Sqetch = ({ nouns }: { nouns: string[] }) => {
     return <div className="py-4 flex flex-col gap-4">
         <CreateSqetch
             addSqetch={addSqetch}
-            nouns={nouns}
             noSqetchs={sqetchs.length === 0} />
 
         {sqetchs.map((sqetch: string) => (
