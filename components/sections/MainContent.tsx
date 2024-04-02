@@ -81,9 +81,9 @@ const MainContent = () => {
             </div>
 
 
-            <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row">
+            <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row h-auto ">
                 {/*-------- Here goes the selected words ---------*/}
-                <div className="lg:flex-1 hidden lg:block h-auto p-4 lg:sw-1/2 ">
+                <div className="lg:flex-1 hidden lg:block h-full p-4 lg:sw-1/2  ">
                     <SqetchIdeas />
 
                 </div>

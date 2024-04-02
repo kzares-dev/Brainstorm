@@ -12,7 +12,7 @@ export function getRandomElements(arr: string[]): string[] {
   const index1 = Math.floor(Math.random() * arr.length);
   let index2 = Math.floor(Math.random() * arr.length);
   while (index2 === index1) {
-      index2 = Math.floor(Math.random() * arr.length);
+    index2 = Math.floor(Math.random() * arr.length);
   }
 
   // Add the elements corresponding to the random indices to the new array

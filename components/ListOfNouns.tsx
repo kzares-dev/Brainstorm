@@ -1,3 +1,4 @@
+import Noun from "./Noun"
 
 const ListOfNouns = ({ nouns, randomElements }: { nouns: string[], randomElements: string[] }) => {
 
@@ -14,8 +15,8 @@ const ListOfNouns = ({ nouns, randomElements }: { nouns: string[], randomElement
 
             <div className="p-4 gap-4 lg:gap-10 flex flex-col">
 
-                {nouns.map((word: string) => (
-                    <span className="font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[2.25rem] lg:leading-[3.0625rem] xl:text-[5.75rem] xl:leading-[4.5rem] text-n-5 " key={word}>{word}</span>
+                {nouns.map((word: string, idx: number) => (
+                    <Noun word={word} idx={idx} />
                 ))}
             </div>
 
