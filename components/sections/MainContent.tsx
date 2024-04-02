@@ -91,7 +91,7 @@ const MainContent = () => {
                 <div className="w-[1px] h-auto bg-neutral-300 " />
                 {/*-------- Random generated words ---------*/}
                 <div className="lg:w-1/2">
-                    {nouns.length > 0 && <ListOfNouns randomElements={randomNouns} nouns={nouns} />}
+                     <ListOfNouns randomElements={randomNouns} nouns={nouns} />
                 </div>
 
 

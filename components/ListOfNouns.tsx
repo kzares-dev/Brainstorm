@@ -2,6 +2,18 @@ import Noun from "./Noun"
 
 const ListOfNouns = ({ nouns, randomElements }: { nouns: string[], randomElements: string[] }) => {
 
+    if (nouns.length <= 0) return <div className="flex-1 h-auto  bg-gray-50 py-5 px-2">
+
+       
+        <div className="gap-2 lg:gap-4 py-5 flex flex-col">
+
+            {[1,2,3,4, 5].map((number) => (
+                <div className="w-full h-[70px] bg-gray-200 shadow-sm animate-pulse rounded-md" />
+            ))}
+        </div>
+
+    </div>
+
     return (
         <div className="flex-1 h-auto  bg-gray-50 py-5 px-2">
 
