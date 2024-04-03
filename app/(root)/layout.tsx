@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '../globals.css'
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: 'Brainstorm',
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className='lg:py-[10rem] container scrollbar-hide'>
         {children}
+        <Toaster />
       </body>
     </html>
   )
