@@ -8,7 +8,7 @@ const ListOfNouns = ({ nouns, randomElements }: { nouns: string[], randomElement
         <div className="gap-2 lg:gap-4 py-5 flex flex-col">
 
             {[1,2,3,4, 5].map((number) => (
-                <div className="w-full h-[70px] bg-gray-200 shadow-sm animate-pulse rounded-md" />
+                <div key={number} className="w-full h-[70px] bg-gray-200 shadow-sm animate-pulse rounded-md" />
             ))}
         </div>
 

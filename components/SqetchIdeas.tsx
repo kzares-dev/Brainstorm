@@ -27,7 +27,7 @@ const Sqetch = () => {
         <Loader />
     </div>
 
-    return <div className="py-4 flex flex-col gap-4">
+    return <div className="py-4 flex flex-col gap-4 h-full overflow-auto scrollbar-hide">
         <CreateSqetch
             addSqetch={addSqetch}
             noSqetchs={sqetchs.length === 0} />

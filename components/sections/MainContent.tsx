@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useGetNouns } from "@/lib/actions/nouns.action";
 import ListOfNouns from "../ListOfNouns";
 import { getRandomElements } from "@/lib/utils";
+import SqetchsModal from "../SqetchsModal";
 
 const MainContent = () => {
 
@@ -63,20 +64,27 @@ const MainContent = () => {
                     </div>
                 </div>
 
-                <button
-                    onClick={() => setToggleButton(!toggleButton)}
-                    className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
+                <div className="flex w-full lg:w-auto px-5 justify-between items-center">
+                    <SqetchsModal />
 
-                    <span className="font-sora text-2xl font-bold font-code text-n-7">generate</span>
+                    <button
+                        onClick={() => setToggleButton(!toggleButton)}
+                        className="flex flex-row items-center gap-3 bg-[#EFBC9B]/80 border border-slate-500 shadow-md px-4 py-3 rounded-md">
 
-                    <Image
-                        width={30}
-                        height={30}
-                        alt=""
-                        src={generate}
-                    />
+                        <span className="font-sora text-2xl font-bold font-code text-n-7">generate</span>
 
-                </button >
+                        <Image
+                            width={30}
+                            height={30}
+                            alt=""
+                            src={generate}
+                        />
+
+                    </button >
+
+                </div>
+
+
 
             </div>
 
@@ -91,7 +99,7 @@ const MainContent = () => {
                 <div className="w-[1px] h-auto bg-neutral-300 " />
                 {/*-------- Random generated words ---------*/}
                 <div className="lg:w-1/2">
-                     <ListOfNouns randomElements={randomNouns} nouns={nouns} />
+                    <ListOfNouns randomElements={randomNouns} nouns={nouns} />
                 </div>
 
 

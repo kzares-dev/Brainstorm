@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='lg:py-[10rem] container'>
+      <body className='lg:py-[10rem] container scrollbar-hide'>
         {children}
       </body>
     </html>
