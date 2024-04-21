@@ -89,14 +89,14 @@ const MainContent = () => {
             </div>
 
 
-            <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row h-auto ">
+            <div className="border-t border-neutral-300 flex justify-between min-h-[50vh] flex-row h-auto">
                 {/*-------- Here goes the selected words ---------*/}
-                <div className="lg:flex-1 hidden lg:block h-full p-4 lg:sw-1/2  ">
+                <div className="lg:flex-1 hidden lg:block h-full p-4 lg:sw-1/2  scrollbar-hide">
                     <SqetchIdeas />
 
                 </div>
 
-                <div className="w-[1px] h-auto bg-neutral-300 " />
+                <div className="w-[1px] hidden md:block h-auto bg-neutral-300 " />
                 {/*-------- Random generated words ---------*/}
                 <div className="lg:w-1/2">
                     <ListOfNouns randomElements={randomNouns} nouns={nouns} />

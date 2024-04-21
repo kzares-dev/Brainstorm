@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='lg:py-[10rem] container scrollbar-hide'>
+      <body className='lg:py-[10rem] container scrollbar-hide pb-5'>
         {children}
         <Toaster />
       </body>
